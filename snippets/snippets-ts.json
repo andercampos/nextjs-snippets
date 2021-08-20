@@ -1,0 +1,317 @@
+{
+  "import { } of React": {
+    "prefix": "impr",
+    "body": "import { $0 } from 'react'"
+  },
+  "useState": {
+    "prefix": "ust",
+    "body": "const [${1:state}, set${2:State}] = useState(${0:INITIAL_VALUE})"
+  },
+  "useEffect": {
+    "prefix": "uef",
+    "body": ["useEffect(() => {", "\t$0", "}, [])"]
+  },
+  "useLayoutEffect": {
+    "prefix": "ulayef",
+    "body": ["useLayoutEffect(() => {", "\t$0", "}, [])"]
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "body": ["const ${1:function} = useCallback(() => {", "\t${2}", "}, [$0])"]
+  },
+  "useContext": {
+    "prefix": "uctx",
+    "body": "const ${0:context} = useContext(${1:CONTEXT_OBJECT})"
+  },
+  "useMemo": {
+    "prefix": "umem",
+    "body": ["const ${1:memoized} = useMemo(() => {", "\t$2", "}, [$0])"]
+  },
+  "useRef": {
+    "prefix": "uref",
+    "body": "const ${1:element}Ref = useRef<HTML${1:Name}Element>(null)"
+  },
+  "Class Component": {
+    "prefix": "cc",
+    "body": [
+      "import { Component } from 'react'",
+      "",
+      "export class ${1:${TM_FILENAME_BASE}} extends Component {",
+      "\tstate = {}",
+      "\trender() { ",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t${0}",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}"
+    ]
+  },
+  "Class Component with constructor": {
+    "prefix": "ccc",
+    "body": [
+      "import { Component } from 'react'",
+      "",
+      "export class ${1:${TM_FILENAME_BASE}} extends Component {",
+      "\tconstructor(props) {",
+      "\t\tsuper(props)",
+      "\t\tthis.state = {}",
+      "\t}",
+      "\trender() { ",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t${0}",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}"
+    ]
+  },
+  "Functional Component": {
+    "prefix": "fc",
+    "body": [
+      "export const ${1:${TM_FILENAME_BASE}} = () => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}"
+    ]
+  },
+  "Functional Component with forwardRef": {
+    "prefix": "fcfr",
+    "body": [
+      "import { forwardRef } from 'react'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}} = forwardRef<HTML${2:Type}Element, Props>((props, ref) => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "});"
+    ]
+  },
+  "create context": {
+    "prefix": "cctx",
+    "body": [
+      "import { createContext, useContext } from 'react'",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}Context = createContext({})",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}}Provider = ({children}) => {",
+      "\treturn (",
+      "\t\t<${1:${TM_FILENAME_BASE}}Context.Provider value={{ value: ''}}>",
+      "\t\t\t{children}",
+      "\t\t</${1:${TM_FILENAME_BASE}}Context.Provider>",
+      "\t)",
+      "}",
+      "",
+      "export function use${1:${TM_FILENAME_BASE}}() {",
+      "\tconst context = useContext(${1:${TM_FILENAME_BASE}}Context)",
+      "",
+      "\tif (!context) {",
+      "\t\tthrow new Error('use${1:${TM_FILENAME_BASE}} must be used within a ${1:${TM_FILENAME_BASE}}Provider')",
+      "\t}",
+      "",
+      "\treturn context",
+      "}"
+    ],
+    "description": "Create context with custom hook"
+  },
+  "import { } of Next.js": {
+    "prefix": "impn",
+    "body": "import { $2 } from 'next'$0"
+  },
+  "getInitialProps": {
+    "prefix": "initp",
+    "body": [
+      "${1:${TM_FILENAME_BASE}}.getInitialProps = async (context) => {",
+      "\t$0",
+      "\treturn {",
+      "\t\tprops: {}",
+      "\t}",
+      "}",
+      ""
+    ]
+  },
+  "getStaticProps": {
+    "prefix": "sp",
+    "body": [
+      "export const getStaticProps: GetStaticProps = async (context) => {",
+      "\t$0",
+      "\treturn {",
+      "\t\tprops: {}",
+      "\t}",
+      "}",
+      ""
+    ]
+  },
+  "getStaticPaths": {
+    "prefix": "spth",
+    "body": [
+      "export const getStaticPaths: GetStaticPaths = async () => {",
+      "\t$0",
+      "\treturn {",
+      "\t\tpaths: [",
+      "\t\t\t{ params: {} }",
+      "\t\t],",
+      "\t\tfallback: true",
+      "\t}",
+      "}",
+      ""
+    ]
+  },
+  "getServerSideProps": {
+    "prefix": "ssp",
+    "body": [
+      "export const getServerSideProps: GetServerSideProps = async (context) => {",
+      "\t$0",
+      "\treturn {",
+      "\t\tprops: {}",
+      "\t}",
+      "}",
+      ""
+    ]
+  },
+  "NextPage": {
+    "prefix": "np",
+    "body": [
+      "import { NextPage } from 'next'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: NextPage<Props> = () => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Create a Next.js Page with TypeScript interfaces"
+  },
+  "NextPage with getStaticProps": {
+    "prefix": "npsp",
+    "body": [
+      "import { GetStaticProps, NextPage } from 'next'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: NextPage<Props> = () => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export const getStaticProps: GetStaticProps = async (context) => {",
+      "\treturn {",
+      "\t\tprops: {}",
+      "\t}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a Next.js Page with GetStaticProps and TypeScript interfaces"
+  },
+  "NextPage with getServerSideProps": {
+    "prefix": "npssp",
+    "body": [
+      "import { NextPage, GetServerSideProps } from 'next'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: NextPage<Props> = () => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export const getServerSideProps: GetServerSideProps = (context) => {",
+      "\treturn {",
+      "\t\tprops: {}",
+      "\t}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a Next.js Page with GetServerSideProps and TypeScript interfaces"
+  },
+  "NextPage with getInitialProps": {
+    "prefix": "npinitp",
+    "body": [
+      "import { NextPage } from 'next'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}}: NextPage<Props> = () => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "${1:${TM_FILENAME_BASE}}.getInitialProps = async (context) => {",
+      "\treturn {}",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a Next.js Page with GetInitialProps and TypeScript interfaces"
+  },
+  "Use Head": {
+    "prefix": "hd",
+    "body": ["<Head>", "\t$0", "</Head>"]
+  },
+  "Use Link": {
+    "prefix": "lnk",
+    "body": ["<Link href=\"$1\">", "\t<a>", "\t\t$0", "\t</a>", "</Link>"],
+    "description": "Use Next.js Link Tag with <a>"
+  },
+  "Use Link with dynmic route": {
+    "prefix": "lnkdyn",
+    "body": [
+      "<Link href=\"/$1\" as={`/${2:SLUG_NAME}`}>",
+      "\t<a>",
+      "\t\t$0",
+      "\t</a>",
+      "</Link>"
+    ],
+    "description": "Use Next.js Link Tag with Dynamic Route"
+  },
+  "Use sized Image component": {
+    "prefix": "img",
+    "body": "<Image alt=\"$1\" src=\"$2\" width=\"$3\" height=\"$4\" />",
+    "description": "Use Next.js sized Image component"
+  },
+  "Use unsized Image component": {
+    "prefix": "uimg",
+    "body": "<Image alt=\"$1\" src=\"$2\" unsized=\"$3\" />",
+    "description": "Use Next.js unsized Image component"
+  }
+}
